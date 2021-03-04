@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./globalStyles.css";
 import reportWebVitals from "./reportWebVitals";
-import Router from "./routes";
+import Router from "./routes/index";
 import { AuthProvider } from "./contexts/auth";
 
 ReactDOM.render(
