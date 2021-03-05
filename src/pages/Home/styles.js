@@ -19,6 +19,8 @@ export const CategoryContainer = styled.div`
 export const Category = styled.h4`
   font-weight: 500;
   margin-bottom: 1em;
+  cursor: pointer;
+  color: ${(props) => (props.selected ? "yellow" : "black")};
 `;
 
 export const ProductContainer = styled.div`

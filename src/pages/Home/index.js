@@ -20,140 +20,85 @@ function Home() {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
 
-  async function loadProducts() {
+  async function loadProducts(e) {
     const response = await api.get("/products");
     setProducts(response.data);
+    if (e) {
+      e.target.style.color = "yellow";
+    }
+  }
+
+  async function loadProductsFromCategory(categoryId, e) {
+    const response = await api.get(`/products/${categoryId}`);
+    setProducts(response.data);
+
+    if (e) {
+      e.target.style.color = "yellow";
+    }
   }
 
   async function loadCategories() {
     const response = await api.get("/categories");
     setCategories(response.data);
   }
+  function changeSelected(el) {
+    document.getElementsByClassName("categories").style.color = "black";
+    el.target.style.color = "yellow";
+  }
   useEffect(() => {
     loadProducts();
     loadCategories();
   }, []);
-
+  //TODO - Quando seleciona uma categoria o total muda, fica só o total da categoria!!!
   return (
     <>
       <Nav />
       <Container>
-        <Title>Cardápio Café XYZ</Title>
+        <Title>Cardápio do Café XYZ</Title>
 
-        <CategoryProductContainer>
-          <CategoryContainer>
-            <Category>Categorias:</Category>
-            {categories &&
-              categories.map((category) => (
-                <Category key={category.id}>
-                  {category.name} ({category.amount})
+        {products === null ? (
+          <h1>Carregando...</h1>
+        ) : (
+          <CategoryProductContainer>
+            {categories === null ? (
+              <h1>Carregando...</h1>
+            ) : (
+              <CategoryContainer>
+                <Category style={{ cursor: "default" }}>Categorias:</Category>
+                <Category
+                  className="categories"
+                  onClick={(e) => loadProducts(e)}
+                >
+                  Todas ({products.length})
                 </Category>
-              ))}
-          </CategoryContainer>
+                {categories &&
+                  categories.map((category) => (
+                    <Category
+                      className="categories"
+                      onClick={(e) => loadProductsFromCategory(category.id, e)}
+                      key={category.id}
+                    >
+                      {category.name} ({category.amount})
+                    </Category>
+                  ))}
+              </CategoryContainer>
+            )}
 
-          <ProductContainer>
-            <Product>
-              <ProductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <ProductData>
-                <ProductText>Produto</ProductText>
-                <ProductText>R$ 10,00</ProductText>
-              </ProductData>
-              <AddToCart>Adicionar ao carrinho</AddToCart>
-            </Product>
-            {products &&
-              products.map((product) => (
-                <Product key={product.id}>
-                  <ProductImage src={product.image_url} />
-                  <ProductData>
-                    <ProductText>{product.name}</ProductText>
-                    <ProductText>R$ {product.price}</ProductText>
-                  </ProductData>
-                  <AddToCart>Adicionar ao carrinho</AddToCart>
-                </Product>
-              ))}
-            {/* <Product>
-              <ProductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <ProductData>
-                <ProductText>Produto</ProductText>
-                <ProductText>R$ 10,00</ProductText>
-              </ProductData>
-              <AddToCart>Adicionar ao carrinho</AddToCart>
-            </Product>
-
-            <Product>
-              <ProductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <ProductData>
-                <ProductText>Produto</ProductText>
-                <ProductText>R$ 10,00</ProductText>
-              </ProductData>
-              <AddToCart>Adicionar ao carrinho</AddToCart>
-            </Product>
-
-            <Product>
-              <ProductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <ProductData>
-                <ProductText>Produto</ProductText>
-                <ProductText>R$ 10,00</ProductText>
-              </ProductData>
-              <AddToCart>Adicionar ao carrinho</AddToCart>
-            </Product>
-
-            <Product>
-              <ProductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <ProductData>
-                <ProductText>Produto</ProductText>
-                <ProductText>R$ 10,00</ProductText>
-              </ProductData>
-              <AddToCart>Adicionar ao carrinho</AddToCart>
-            </Product>
-
-            <Product>
-              <ProductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <ProductData>
-                <ProductText>Produto</ProductText>
-                <ProductText>R$ 10,00</ProductText>
-              </ProductData>
-              <AddToCart>Adicionar ao carrinho</AddToCart>
-            </Product>
-
-            <Product>
-              <ProductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <ProductData>
-                <ProductText>Produto</ProductText>
-                <ProductText>R$ 10,00</ProductText>
-              </ProductData>
-              <AddToCart>Adicionar ao carrinho</AddToCart>
-            </Product> */}
-          </ProductContainer>
-        </CategoryProductContainer>
+            <ProductContainer>
+              {products &&
+                products.map((product) => (
+                  <Product key={product.id}>
+                    <ProductImage src={product.image_url} />
+                    <ProductData>
+                      <ProductText>{product.name}</ProductText>
+                      <ProductText>R$ {product.price}</ProductText>
+                    </ProductData>
+                    <AddToCart>Adicionar ao carrinho</AddToCart>
+                  </Product>
+                ))}
+            </ProductContainer>
+          </CategoryProductContainer>
+        )}
       </Container>
     </>
   );
