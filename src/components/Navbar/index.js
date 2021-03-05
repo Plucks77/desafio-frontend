@@ -7,8 +7,8 @@ function Navbar() {
   const { productsInCart } = useCart();
   return (
     <Container>
-      <Link href="/my-cart">
-        {productsInCart.length > 0 && productsInCart.length} Meu carrinho
+      <Link href="/cart">
+        {productsInCart && productsInCart.length} Meu carrinho
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

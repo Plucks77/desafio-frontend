@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Home from "../pages/Home";
+import Cart from "../pages/Cart";
 import Logout from "../pages/Logout";
 
 export default function RouterApp() {
@@ -15,6 +16,10 @@ export default function RouterApp() {
       <Switch>
         <Route path="/home">
           <Home />
+        </Route>
+
+        <Route path="/cart">
+          <Cart />
         </Route>
 
         <Route path="/logout">

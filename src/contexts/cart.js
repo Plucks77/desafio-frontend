@@ -1,9 +1,27 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 const CartContext = createContext({});
 
 export function CartProvider({ children }) {
   const [productsInCart, setProductsInCart] = useState([]);
+
+  function loadStoragedData() {
+    const products = localStorage.getItem("@desafio:cart");
+    setProductsInCart(products);
+    console.log(localStorage.getItem("@desafio:cart"));
+  }
+
+  useEffect(() => {
+    loadStoragedData();
+  }, []);
+
+  // useEffect(() => {
+  //   if (productsInCart.length !== 0) {
+  //     localStorage.removeItem("@desafio:cart");
+  //     localStorage.setItem("@desafio:cart", productsInCart);
+  //     console.log(productsInCart);
+  //   }
+  // }, [productsInCart]);
 
   function addProductToCart(product) {
     if (productsInCart.length === 0) {
