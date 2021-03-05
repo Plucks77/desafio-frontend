@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useHistory } from "react-router-dom";
 
-import api from "../../services/api";
+import { useAuth } from "../../contexts/auth";
 
 import {
   Container,
@@ -42,8 +41,8 @@ const registerSchema = yup.object({
 
 function Register() {
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
+  const { register } = useAuth();
 
   function handleShowPassword() {
     setShowPassword(!showPassword);
@@ -57,14 +56,16 @@ function Register() {
         onSubmit={async (values, actions) => {
           setLoading(true);
           try {
-            const response = await api.post("/user/register", values);
-            localStorage.setItem("user_id", response.data.user_id);
-            localStorage.setItem("token", response.data.token);
-            history.push("/home");
-          } catch (error) {
-            if (error.response.data.error.includes("email_unique")) {
+            const response = await register(
+              values.name,
+              values.email,
+              values.password
+            );
+            if (response === "email_unique") {
               actions.setFieldError("email", "Este e-mail já foi cadastrado");
             }
+          } catch (error) {
+            console.log(error);
           }
           setLoading(false);
         }}

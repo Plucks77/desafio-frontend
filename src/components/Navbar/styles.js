@@ -11,4 +11,6 @@ export const Link = styled.a`
   text-decoration: none;
   color: black;
   font-size: 16px;
+  display: flex;
+  align-items: center;
 `;

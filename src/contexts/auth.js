@@ -46,13 +46,13 @@ export function AuthProvider({ children }) {
     const response = await auth.register(name, email, password);
 
     if (typeof response !== "string") {
-      setUserId(response.user.id);
+      setUserId(response.user_id);
 
       api.defaults.headers.Authorization = `Bearer ${response.token}`;
 
       localStorage.setItem(
         "@desafio:user_id",
-        JSON.stringify(response.user.id)
+        JSON.stringify(response.user_id)
       );
       localStorage.setItem("@desafio:token", JSON.stringify(response.token));
     }

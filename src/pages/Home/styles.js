@@ -62,5 +62,6 @@ export const AddToCart = styled.button`
   border-radius: 5px;
   &:hover {
     cursor: pointer;
+    opacity: 0.9;
   }
 `;

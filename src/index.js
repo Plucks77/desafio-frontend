@@ -4,11 +4,14 @@ import "./globalStyles.css";
 import reportWebVitals from "./reportWebVitals";
 import Router from "./routes/index";
 import { AuthProvider } from "./contexts/auth";
+import { CartProvider } from "./contexts/cart";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <Router />
+      <CartProvider>
+        <Router />
+      </CartProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")

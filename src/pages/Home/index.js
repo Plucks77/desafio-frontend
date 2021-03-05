@@ -15,44 +15,53 @@ import {
   Category,
 } from "./styles";
 import Nav from "../../components/Navbar";
+import Modal from "../../components/Modal";
 
 function Home() {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
+  const [countProducts, setCountProducts] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  async function loadProducts(e) {
+  async function loadProducts() {
     const response = await api.get("/products");
     setProducts(response.data);
-    if (e) {
-      e.target.style.color = "yellow";
-    }
+    setCountProducts(response.data.length);
   }
 
-  async function loadProductsFromCategory(categoryId, e) {
+  async function loadProductsFromCategory(categoryId) {
     const response = await api.get(`/products/${categoryId}`);
     setProducts(response.data);
-
-    if (e) {
-      e.target.style.color = "yellow";
-    }
   }
 
   async function loadCategories() {
     const response = await api.get("/categories");
     setCategories(response.data);
   }
-  function changeSelected(el) {
-    document.getElementsByClassName("categories").style.color = "black";
-    el.target.style.color = "yellow";
+
+  function handleShowModal(product) {
+    setSelectedProduct(product);
+    setShowModal(true);
   }
+
+  function handleCloseModal() {
+    setShowModal(false);
+  }
+
   useEffect(() => {
     loadProducts();
     loadCategories();
   }, []);
-  //TODO - Quando seleciona uma categoria o total muda, fica só o total da categoria!!!
+
   return (
     <>
       <Nav />
+      <Modal
+        show={showModal}
+        handleCloseModal={() => handleCloseModal()}
+        product={selectedProduct}
+      />
       <Container>
         <Title>Cardápio do Café XYZ</Title>
 
@@ -67,15 +76,15 @@ function Home() {
                 <Category style={{ cursor: "default" }}>Categorias:</Category>
                 <Category
                   className="categories"
-                  onClick={(e) => loadProducts(e)}
+                  onClick={(e) => loadProductsFromCategory("all")}
                 >
-                  Todas ({products.length})
+                  Todas ({countProducts})
                 </Category>
                 {categories &&
                   categories.map((category) => (
                     <Category
                       className="categories"
-                      onClick={(e) => loadProductsFromCategory(category.id, e)}
+                      onClick={() => loadProductsFromCategory(category.id)}
                       key={category.id}
                     >
                       {category.name} ({category.amount})
@@ -93,7 +102,9 @@ function Home() {
                       <ProductText>{product.name}</ProductText>
                       <ProductText>R$ {product.price}</ProductText>
                     </ProductData>
-                    <AddToCart>Adicionar ao carrinho</AddToCart>
+                    <AddToCart onClick={() => handleShowModal(product.id)}>
+                      Adicionar ao carrinho
+                    </AddToCart>
                   </Product>
                 ))}
             </ProductContainer>

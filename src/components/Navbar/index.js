@@ -1,16 +1,18 @@
 import React from "react";
 
+import { useCart } from "../../contexts/cart";
 import { Container, Link } from "./styles";
 
 function Navbar() {
+  const { productsInCart } = useCart();
   return (
     <Container>
       <Link href="/my-cart">
-        Meu carrinho{" "}
+        {productsInCart.length > 0 && productsInCart.length} Meu carrinho
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="18"
+          height="18"
           fill="currentColor"
           className="bi bi-cart4"
           viewBox="0 0 16 16"
