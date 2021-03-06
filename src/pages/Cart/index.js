@@ -18,11 +18,17 @@ import {
   PayingArea,
   Total,
   FinishButton,
+  NoProductsContainer,
 } from "./styles";
 
 function Cart() {
   const [total, setTotal] = useState(null);
-  const { productsInCart } = useCart();
+  const { productsInCart, removeProductFromCart } = useCart();
+
+  function handleRemove(productId) {
+    // const filtered = productsInCart.filter((p) => p.product.id !== productId);
+    removeProductFromCart(productId);
+  }
 
   useEffect(() => {
     if (productsInCart) {
@@ -39,46 +45,55 @@ function Cart() {
       <Nav />
       <Container>
         <Title>Carrinho</Title>
+        {productsInCart.length ? (
+          <ProductsContainer>
+            {productsInCart.map((product) => (
+              <Product key={product.product.id}>
+                <ProductDataContainer>
+                  <ProductName>{product.product.name}</ProductName>
+                  <ProductImage src={product.product.image_url} />
+                </ProductDataContainer>
+                <Right>
+                  <ProductPrice>
+                    <Amount>{product.amount}</Amount>
+                    <TotalFor>
+                      {(product.amount * product.product.price).toLocaleString(
+                        "pt-br",
+                        {
+                          style: "currency",
+                          currency: "BRL",
+                        }
+                      )}
+                    </TotalFor>
+                  </ProductPrice>
+                  <RemoveButton
+                    onClick={() => handleRemove(product.product.id)}
+                  >
+                    Remover
+                  </RemoveButton>
+                </Right>
+              </Product>
+            ))}
 
-        <ProductsContainer>
-          {productsInCart.map((product) => (
-            <Product key={product.product.id}>
-              <ProductDataContainer>
-                <ProductName>{product.product.name}</ProductName>
-                <ProductImage src={product.product.image_url} />
-              </ProductDataContainer>
-              <Right>
-                <ProductPrice>
-                  <Amount>{product.amount}</Amount>
-                  <TotalFor>
-                    {(product.amount * product.product.price).toLocaleString(
-                      "pt-br",
-                      {
-                        style: "currency",
-                        currency: "BRL",
-                      }
-                    )}
-                  </TotalFor>
-                </ProductPrice>
-                <RemoveButton>Remover</RemoveButton>
-              </Right>
-            </Product>
-          ))}
+            <PayingArea>
+              {total && (
+                <Total>
+                  Total:{" "}
+                  {total.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </Total>
+              )}
 
-          <PayingArea>
-            {total && (
-              <Total>
-                Total:{" "}
-                {total.toLocaleString("pt-br", {
-                  style: "currency",
-                  currency: "BRL",
-                })}
-              </Total>
-            )}
-
-            <FinishButton>Finalizar a compra</FinishButton>
-          </PayingArea>
-        </ProductsContainer>
+              <FinishButton>Finalizar a compra</FinishButton>
+            </PayingArea>
+          </ProductsContainer>
+        ) : (
+          <NoProductsContainer>
+            <h1>Não há produtos em seu carrinho ainda!</h1>
+          </NoProductsContainer>
+        )}
       </Container>
     </>
   );

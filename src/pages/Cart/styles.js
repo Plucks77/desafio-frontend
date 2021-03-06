@@ -88,8 +88,22 @@ export const FinishButton = styled.button`
   border: 0;
   border-radius: 5px;
   font-weight: bold;
+  outline: none;
   &:hover {
     cursor: pointer;
     opacity: 0.9;
   }
+  &:active {
+    opacity: 0.8;
+  }
+`;
+
+export const NoProductsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin-top: 2em;
+  border-radius: 5px;
+  background-color: white;
 `;

@@ -27,12 +27,13 @@ export function CartProvider({ children }) {
   // }
 
   function addProductToCart(product) {
+    console.log(product.product.id);
     if (productsInCart === null) {
       setProductsInCart([product]);
     } else {
       let has = false;
       productsInCart.map((p) => {
-        if (p.product.id === product.product_id) {
+        if (p.product.id === product.product.id) {
           has = true;
         }
       });
@@ -44,8 +45,15 @@ export function CartProvider({ children }) {
     }
   }
 
+  function removeProductFromCart(productId) {
+    const filtered = productsInCart.filter((p) => p.product.id !== productId);
+    setProductsInCart(filtered);
+  }
+
   return (
-    <CartContext.Provider value={{ productsInCart, addProductToCart }}>
+    <CartContext.Provider
+      value={{ productsInCart, addProductToCart, removeProductFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );

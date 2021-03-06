@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   font-size: 40px;
-  margin-left: 5em;
+  margin-left: calc(11vw + 50px);
 `;
 
 export const CategoryProductContainer = styled.div`
@@ -14,7 +14,7 @@ export const CategoryProductContainer = styled.div`
 `;
 export const CategoryContainer = styled.div`
   margin-top: 48px;
-  width: 10em;
+  width: 11vw;
   background-color: white;
   padding-left: 10px;
   padding-top: 10px;
