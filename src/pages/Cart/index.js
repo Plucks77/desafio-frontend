@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { useHistory } from "react-router-dom";
+
 import { useCart } from "../../contexts/cart";
 import Nav from "../../components/Navbar";
 import {
@@ -25,9 +27,14 @@ import {
 function Cart() {
   const [total, setTotal] = useState(null);
   const { productsInCart, removeProductFromCart } = useCart();
+  const history = useHistory();
 
   function handleRemove(productId) {
     removeProductFromCart(productId);
+  }
+
+  function handlePayment() {
+    history.push("/payment");
   }
 
   useEffect(() => {
@@ -86,7 +93,9 @@ function Cart() {
                 </Total>
               )}
 
-              <FinishButton>Finalizar a compra</FinishButton>
+              <FinishButton onClick={handlePayment}>
+                Finalizar a compra
+              </FinishButton>
             </PayingArea>
           </ProductsContainer>
         ) : (

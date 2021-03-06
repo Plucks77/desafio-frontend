@@ -25,10 +25,13 @@ export const Input = styled.input`
   font-size: 16px;
   padding-left: 1em;
   border-radius: 10px;
-  border-style: solid;
-  border-width: 3px;
-  border-color: var(--primary);
+  border: 3px solid var(--primary);
   margin: 1em 0;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 5px var(--primary);
+    border: 3px solid var(--primary);
+  }
 `;
 
 export const Error = styled.small`

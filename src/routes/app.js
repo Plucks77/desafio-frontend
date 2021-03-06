@@ -8,6 +8,7 @@ import {
 
 import Home from "../pages/Home";
 import Cart from "../pages/Cart";
+import Payment from "../pages/Payment";
 import Logout from "../pages/Logout";
 
 export default function RouterApp() {
@@ -22,13 +23,17 @@ export default function RouterApp() {
           <Cart />
         </Route>
 
+        <Route path="/payment">
+          <Payment />
+        </Route>
+
         <Route path="/logout">
           <Logout />
         </Route>
 
-        <Route>
-          <Redirect to="/home" />
-        </Route>
+        {/* <Route>
+          <Redirect to="/xxx" />
+        </Route> */}
       </Switch>
     </Router>
   );

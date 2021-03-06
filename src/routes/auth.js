@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -17,9 +22,10 @@ export default function RouterApp() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route>
-          <PageNotFound />
-        </Route>
+
+        {/* <Route>
+          <Redirect to="/login" />
+        </Route> */}
       </Switch>
     </Router>
   );
