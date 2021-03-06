@@ -13,6 +13,7 @@ export const Title = styled.h1`
 export const PaymentContainer = styled.form`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin: 1em 20vw;
   padding: 1em 2em;
   padding-top: 2em;
@@ -20,8 +21,38 @@ export const PaymentContainer = styled.form`
   background-color: white;
 `;
 
+export const PayArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
+
+export const SVG = styled.svg`
+  width: 200px;
+  height: 200px;
+  color: var(--primary);
+`;
+
+export const PayButton = styled.button`
+  width: 200px;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: var(--primary);
+  color: white;
+  margin-bottom: 1em;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
+  &:active {
+    opacity: 0.8;
+  }
+`;
+
 export const FieldGroup = styled.div`
-  /* background-color: yellow; */
   margin: 0 1em;
 `;
 
@@ -37,7 +68,6 @@ export const DoubleField = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* background-color: red; */
 `;
 
 export const Label = styled.label`
@@ -53,6 +83,16 @@ export const Input = styled.input`
   outline: none;
 `;
 
+export const Select = styled.select`
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 3px solid var(--primary);
+  outline: none;
+  cursor: pointer;
+`;
+export const Option = styled.option``;
+
 export const InputStyle = {
   height: "30px",
   borderRadius: "5px",
@@ -60,3 +100,10 @@ export const InputStyle = {
   border: "3px solid var(--primary)",
   outline: "none",
 };
+
+export const Error = styled.small`
+  text-align: center;
+  font-size: 12px;
+  margin-top: 5px;
+  color: var(--error);
+`;
