@@ -3,6 +3,8 @@ import InputMask from "react-input-mask";
 import { Formik } from "formik";
 import * as yup from "yup";
 
+import api from "../../services/api";
+import { useAuth } from "../../contexts/auth";
 import { useCart } from "../../contexts/cart";
 import Nav from "../../components/Navbar";
 
@@ -45,15 +47,26 @@ const paymentSchema = yup.object({
 
 function Payment() {
   const [total, setTotal] = useState(null);
+  const [sendProducts, setSendProducts] = useState([]);
   const { productsInCart } = useCart();
+  const { userId } = useAuth();
 
   useEffect(() => {
     if (productsInCart) {
       var total = 0;
+      var send = [];
       productsInCart.map((product) => {
         total += product.product.price * product.amount;
+
+        send.push({
+          id: product.product.id,
+          amount: product.amount,
+          observation: product.observation,
+        });
+        console.log(send);
       });
       setTotal(total);
+      setSendProducts(send);
     }
   }, [productsInCart]);
 
@@ -74,7 +87,17 @@ function Payment() {
           }}
           validationSchema={paymentSchema}
           onSubmit={async (values, actions) => {
-            console.log(values);
+            try {
+              const response = await api.post("/purchase", {
+                user_id: userId,
+                installment: values.ownerInstallment,
+                total,
+                products: sendProducts,
+              });
+              console.log(response);
+            } catch (e) {
+              console.log(e);
+            }
           }}
         >
           {(props) => (
