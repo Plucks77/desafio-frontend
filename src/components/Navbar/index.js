@@ -5,10 +5,11 @@ import { Container, Link } from "./styles";
 
 function Navbar() {
   const { productsInCart } = useCart();
+
   return (
     <Container>
       <Link href="/cart">
-        {productsInCart && productsInCart.length} Meu carrinho
+        {productsInCart !== null && productsInCart.length} Meu carrinho
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

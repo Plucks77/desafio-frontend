@@ -20,7 +20,13 @@ function Modal({ show, handleCloseModal, product }) {
   const { addProductToCart } = useCart();
 
   function handleAddToCart() {
-    addProductToCart({ product_id: product, amount, observation });
+    addProductToCart({
+      product: product,
+      amount: parseFloat(amount),
+      observation,
+    });
+    setAmount(1);
+    setObservation("");
     handleCloseModal();
   }
 

@@ -100,9 +100,14 @@ function Home() {
                     <ProductImage src={product.image_url} />
                     <ProductData>
                       <ProductText>{product.name}</ProductText>
-                      <ProductText>R$ {product.price}</ProductText>
+                      <ProductText>
+                        {product.price.toLocaleString("pt-br", {
+                          style: "currency",
+                          currency: "BRL",
+                        })}
+                      </ProductText>
                     </ProductData>
-                    <AddToCart onClick={() => handleShowModal(product.id)}>
+                    <AddToCart onClick={() => handleShowModal(product)}>
                       Adicionar ao carrinho
                     </AddToCart>
                   </Product>

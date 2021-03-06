@@ -15,6 +15,10 @@ export const CategoryProductContainer = styled.div`
 export const CategoryContainer = styled.div`
   margin-top: 48px;
   width: 10em;
+  background-color: white;
+  padding-left: 10px;
+  padding-top: 10px;
+  border-radius: 5px;
 `;
 export const Category = styled.h4`
   font-weight: 500;
@@ -25,9 +29,14 @@ export const Category = styled.h4`
 
 export const ProductContainer = styled.div`
   display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  min-height: 50vh;
   flex-wrap: wrap;
   margin-left: 48px;
   margin-top: 1em;
+  background-color: white;
+  width: 80vw;
 `;
 
 export const Product = styled.div`
