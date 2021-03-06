@@ -19,6 +19,7 @@ import {
   Total,
   FinishButton,
   NoProductsContainer,
+  NoProductsText,
 } from "./styles";
 
 function Cart() {
@@ -26,7 +27,6 @@ function Cart() {
   const { productsInCart, removeProductFromCart } = useCart();
 
   function handleRemove(productId) {
-    // const filtered = productsInCart.filter((p) => p.product.id !== productId);
     removeProductFromCart(productId);
   }
 
@@ -38,7 +38,7 @@ function Cart() {
       });
       setTotal(total);
     }
-  }, []);
+  }, [productsInCart]);
 
   return (
     <>
@@ -91,7 +91,9 @@ function Cart() {
           </ProductsContainer>
         ) : (
           <NoProductsContainer>
-            <h1>Não há produtos em seu carrinho ainda!</h1>
+            <NoProductsText>
+              Não há produtos em seu carrinho ainda!
+            </NoProductsText>
           </NoProductsContainer>
         )}
       </Container>

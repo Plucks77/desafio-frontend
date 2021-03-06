@@ -27,7 +27,6 @@ export const Product = styled.div`
   border-bottom: 2px solid var(--background);
   border-top: 2px solid var(--background);
   border-radius: 2px;
-
   width: 100%;
 `;
 export const ProductDataContainer = styled.div`
@@ -102,8 +101,13 @@ export const NoProductsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
-  margin-top: 2em;
+  height: 40vh;
+  margin: 1em 20vw;
   border-radius: 5px;
   background-color: white;
+`;
+
+export const NoProductsText = styled.h4`
+  font-weight: 500;
+  font-size: 24px;
 `;
