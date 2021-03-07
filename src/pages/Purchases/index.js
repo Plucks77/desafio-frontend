@@ -9,7 +9,6 @@ import {
   PorductImage,
   ProductText,
   ProductTextContainer,
-  ObservationContainer,
   ProductDataContainer,
   Right,
   Product,

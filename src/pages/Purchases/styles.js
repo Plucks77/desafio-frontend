@@ -54,8 +54,6 @@ export const ProductDataContainer = styled.div`
   display: flex;
 `;
 
-export const ObservationContainer = styled.div``;
-
 export const Product = styled.div`
   display: flex;
   flex-direction: row;
