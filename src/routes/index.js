@@ -6,5 +6,20 @@ import { useAuth } from "../contexts/auth";
 export default function RouterApp() {
   const { singned } = useAuth();
 
-  return singned ? <AppRoutes /> : <AuthRoutes />;
+  if (singned !== null) {
+    return singned ? <AppRoutes /> : <AuthRoutes />;
+  }
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <h1>Carregando a aplicação...</h1>
+    </div>
+  );
 }

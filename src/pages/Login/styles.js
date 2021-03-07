@@ -50,9 +50,13 @@ export const Button = styled.button`
   color: white;
   font-size: 16px;
   margin: 1em 0;
+  outline: none;
   &:hover {
     cursor: pointer;
     opacity: 0.9;
+  }
+  &:active {
+    opacity: 0.8;
   }
 `;
 

@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import Home from "../pages/Home";
 import Cart from "../pages/Cart";
@@ -31,9 +36,9 @@ export default function RouterApp() {
           <Logout />
         </Route>
 
-        {/* <Route>
-          <Redirect to="/xxx" />
-        </Route> */}
+        <Route>
+          <Redirect to="/home" />
+        </Route>
       </Switch>
     </Router>
   );

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
+import { useAuth } from "../../contexts/auth";
+import api from "../../services/api";
 import Nav from "../../components/Navbar";
 import {
   Container,
@@ -13,88 +15,46 @@ import {
   Right,
   Product,
   Total,
-} from "./styles";
+} from "./styless";
 
 function Purchases() {
+  const [purchases, setPurchases] = useState(null);
+
+  const { userId } = useAuth();
+
+  async function getPurchases() {
+    const response = await api.get(`/purchases/${userId}`);
+    setPurchases(response.data);
+  }
+
+  useEffect(() => {
+    getPurchases();
+  }, []);
+
   return (
     <>
       <Nav />
       <Container>
         <Title>Minhas compras</Title>
         <PurchasesContainer>
-          <Purchase>
-            <Product>
-              <PorductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <Right>
-                <ProductDataContainer>
-                  <ProductTextContainer>
-                    <ProductText productname>Produto x</ProductText>
-                    <ProductText>Quantidade: 5</ProductText>
-                    <ProductText>Observação: asudasdyasdi</ProductText>
-                  </ProductTextContainer>
-                </ProductDataContainer>
-              </Right>
-            </Product>
-
-            <Product>
-              <PorductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <Right>
-                <ProductDataContainer>
-                  <ProductTextContainer>
-                    <ProductText productname>Produto x</ProductText>
-                    <ProductText>Quantidade: 5</ProductText>
-                    <ProductText>Observação: asudasdyasdi</ProductText>
-                  </ProductTextContainer>
-                </ProductDataContainer>
-              </Right>
-            </Product>
-            <Total>Total R$25,00</Total>
-          </Purchase>
-
-          <Purchase>
-            <Product>
-              <PorductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <Right>
-                <ProductDataContainer>
-                  <ProductTextContainer>
-                    <ProductText productname>Produto x</ProductText>
-                    <ProductText>Quantidade: 5</ProductText>
-                    <ProductText>Observação: asudasdyasdi</ProductText>
-                  </ProductTextContainer>
-                </ProductDataContainer>
-              </Right>
-            </Product>
-
-            <Product>
-              <PorductImage
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
-                }
-              />
-              <Right>
-                <ProductDataContainer>
-                  <ProductTextContainer>
-                    <ProductText productname>Produto x</ProductText>
-                    <ProductText>Quantidade: 5</ProductText>
-                    <ProductText>Observação: asudasdyasdi</ProductText>
-                  </ProductTextContainer>
-                </ProductDataContainer>
-              </Right>
-            </Product>
-            <Total>Total R$25,00</Total>
-          </Purchase>
+          {purchases &&
+            purchases.map((purchase) => (
+              <Purchase key={purchase.id}>
+                <ProductText>
+                  Quantidade de intens: {purchase.items}
+                </ProductText>
+                <ProductText>
+                  Dividido em {purchase.installment} vez(es)
+                </ProductText>
+                <ProductText>
+                  Por um total de{" "}
+                  {purchase.total.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </ProductText>
+              </Purchase>
+            ))}
         </PurchasesContainer>
       </Container>
     </>
