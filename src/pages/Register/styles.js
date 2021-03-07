@@ -32,6 +32,10 @@ export const Input = styled.input`
     box-shadow: 0 0 5px var(--primary);
     border: 3px solid var(--primary);
   }
+  @media (max-width: 500px) {
+    width: 300px;
+    height: 50px;
+  }
 `;
 
 export const Error = styled.small`
@@ -57,6 +61,9 @@ export const Button = styled.button`
   }
   &:active {
     opacity: 0.8;
+  }
+  @media (max-width: 500px) {
+    height: 50px;
   }
 `;
 
