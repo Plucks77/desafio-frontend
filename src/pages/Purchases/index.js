@@ -9,10 +9,12 @@ import {
   PurchasesContainer,
   Purchase,
   ProductText,
-} from "./styless";
+  NoProductsContainer,
+  NoProductsText,
+} from "./styles";
 
 function Purchases() {
-  const [purchases, setPurchases] = useState(null);
+  const [purchases, setPurchases] = useState([]);
 
   const { userId } = useAuth();
 
@@ -29,9 +31,9 @@ function Purchases() {
       <Nav />
       <Container>
         <Title>Minhas compras</Title>
-        <PurchasesContainer>
-          {purchases &&
-            purchases.map((purchase, i) => (
+        {purchases.length > 0 ? (
+          <PurchasesContainer>
+            {purchases.map((purchase, i) => (
               <Purchase key={purchase.id}>
                 <ProductText>{i + 1}</ProductText>
                 <ProductText>
@@ -49,8 +51,14 @@ function Purchases() {
                 </ProductText>
               </Purchase>
             ))}
-        </PurchasesContainer>
+          </PurchasesContainer>
+        ) : (
+          <NoProductsContainer>
+            <NoProductsText>Sem compras</NoProductsText>
+          </NoProductsContainer>
+        )}
       </Container>
+      )
     </>
   );
 }

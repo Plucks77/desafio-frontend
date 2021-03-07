@@ -20,24 +20,10 @@ export const PurchasesContainer = styled.div`
 export const Purchase = styled.div`
   display: flex;
   justify-content: space-around;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 1em;
   padding-bottom: 1em;
-  border-bottom: 5px solid var(--background);
-`;
-export const PorductImage = styled.img`
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-`;
-
-export const ProductTextContainer = styled.div`
-  display: flex;
-  flex: 1;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border-bottom: 10px solid var(--background);
 `;
 
 export const ProductText = styled.h4`
@@ -45,25 +31,18 @@ export const ProductText = styled.h4`
   margin: 1em 10px;
 `;
 
-export const Right = styled.div`
-  width: 30vw;
-  background-color: var(--background);
+export const NoProductsContainer = styled.div`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  margin: 1em 20vw;
   border-radius: 5px;
+  background-color: white;
 `;
 
-export const ProductDataContainer = styled.div`
-  display: flex;
-`;
-
-export const Product = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 1em 0;
-`;
-
-export const Total = styled.h4`
+export const NoProductsText = styled.h1`
   font-weight: 500;
-  margin-left: auto;
-  margin-right: 5em;
+  font-size: 24px;
 `;
