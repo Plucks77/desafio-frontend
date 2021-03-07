@@ -59,12 +59,12 @@ function Payment() {
       var send = [];
       productsInCart.map((product) => {
         total += product.product.price * product.amount;
-
         send.push({
           id: product.product.id,
           amount: product.amount,
           observation: product.observation,
         });
+        return true;
       });
       setTotal(total);
       setSendProducts(send);
@@ -89,7 +89,7 @@ function Payment() {
           validationSchema={paymentSchema}
           onSubmit={async (values, actions) => {
             try {
-              const response = await api.post("/purchase", {
+              await api.post("/purchase", {
                 user_id: userId,
                 installment: values.ownerInstallment,
                 total,

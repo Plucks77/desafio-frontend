@@ -11,6 +11,7 @@ export const Title = styled.h1`
 `;
 
 export const ProductsContainer = styled.div`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -98,6 +99,7 @@ export const FinishButton = styled.button`
 `;
 
 export const NoProductsContainer = styled.div`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   width: 40vw;
@@ -10,8 +11,9 @@ export const Container = styled.div`
   z-index: 10;
   position: absolute;
   /* para ficar centralizada */
+  top: 50%;
   left: 50%;
-  margin-left: -20vw;
+  transform: translate(-50%, -70%);
 `;
 export const Title = styled.h1`
   width: 100%;
@@ -56,13 +58,17 @@ export const Button = styled.button`
   height: 50px;
   margin: 0 1em;
   border: 0;
+  font-weight: bold;
   background-color: ${(props) =>
     props.primary ? "var(--primary)" : "var(--error)"};
   color: white;
   border-radius: 5px;
-
+  outline: none;
   &:hover {
     cursor: pointer;
     opacity: 0.9;
+  }
+  &:active {
+    opacity: 0.8;
   }
 `;

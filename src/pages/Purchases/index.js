@@ -8,13 +8,7 @@ import {
   Title,
   PurchasesContainer,
   Purchase,
-  PorductImage,
   ProductText,
-  ProductTextContainer,
-  ProductDataContainer,
-  Right,
-  Product,
-  Total,
 } from "./styless";
 
 function Purchases() {
@@ -22,14 +16,13 @@ function Purchases() {
 
   const { userId } = useAuth();
 
-  async function getPurchases() {
-    const response = await api.get(`/purchases/${userId}`);
-    setPurchases(response.data);
-  }
-
   useEffect(() => {
+    async function getPurchases() {
+      const response = await api.get(`/purchases/${userId}`);
+      setPurchases(response.data);
+    }
     getPurchases();
-  }, []);
+  }, [userId]);
 
   return (
     <>
@@ -38,8 +31,9 @@ function Purchases() {
         <Title>Minhas compras</Title>
         <PurchasesContainer>
           {purchases &&
-            purchases.map((purchase) => (
+            purchases.map((purchase, i) => (
               <Purchase key={purchase.id}>
+                <ProductText>{i + 1}</ProductText>
                 <ProductText>
                   Quantidade de intens: {purchase.items}
                 </ProductText>

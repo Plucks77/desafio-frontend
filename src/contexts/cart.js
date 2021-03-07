@@ -36,6 +36,7 @@ export function CartProvider({ children }) {
         if (p.product.id === product.product.id) {
           has = true;
         }
+        return true;
       });
       if (!has) {
         setProductsInCart([...productsInCart, product]);

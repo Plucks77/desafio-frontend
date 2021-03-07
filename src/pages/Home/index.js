@@ -23,6 +23,7 @@ function Home() {
   const [countProducts, setCountProducts] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState("all");
 
   async function loadProducts() {
     const response = await api.get("/products");
@@ -33,6 +34,7 @@ function Home() {
   async function loadProductsFromCategory(categoryId) {
     const response = await api.get(`/products/${categoryId}`);
     setProducts(response.data);
+    setSelectedCategoryId(categoryId);
   }
 
   async function loadCategories() {
@@ -62,7 +64,7 @@ function Home() {
         handleCloseModal={() => handleCloseModal()}
         product={selectedProduct}
       />
-      <Container>
+      <Container blur={showModal}>
         <Title>Cardápio do Café XYZ</Title>
 
         {products === null ? (
@@ -75,7 +77,7 @@ function Home() {
               <CategoryContainer>
                 <Category style={{ cursor: "default" }}>Categorias:</Category>
                 <Category
-                  className="categories"
+                  selected={"all" === selectedCategoryId ? true : false}
                   onClick={(e) => loadProductsFromCategory("all")}
                 >
                   Todas ({countProducts})
@@ -83,7 +85,9 @@ function Home() {
                 {categories &&
                   categories.map((category) => (
                     <Category
-                      className="categories"
+                      selected={
+                        category.id === selectedCategoryId ? true : false
+                      }
                       onClick={() => loadProductsFromCategory(category.id)}
                       key={category.id}
                     >

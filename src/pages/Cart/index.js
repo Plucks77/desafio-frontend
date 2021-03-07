@@ -42,6 +42,7 @@ function Cart() {
       var total = 0;
       productsInCart.map((product) => {
         total += product.product.price * product.amount;
+        return true;
       });
       setTotal(total);
     }

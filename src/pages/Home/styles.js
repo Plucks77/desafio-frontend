@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 0 2em;
+  filter: ${(props) => (props.blur ? "blur(1px)" : "")};
 `;
 
 export const Title = styled.h1`
@@ -13,6 +14,7 @@ export const CategoryProductContainer = styled.div`
   display: flex;
 `;
 export const CategoryContainer = styled.div`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   margin-top: 48px;
   width: 11vw;
   background-color: white;
@@ -24,10 +26,11 @@ export const Category = styled.h4`
   font-weight: 500;
   margin-bottom: 1em;
   cursor: pointer;
-  color: ${(props) => (props.selected ? "yellow" : "black")};
+  color: ${(props) => (props.selected ? "var(--primary)" : "black")};
 `;
 
 export const ProductContainer = styled.div`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   border-radius: 5px;
@@ -35,6 +38,7 @@ export const ProductContainer = styled.div`
   flex-wrap: wrap;
   margin-left: 48px;
   margin-top: 1em;
+  padding-bottom: 3em;
   background-color: white;
   width: 80vw;
 `;
@@ -64,13 +68,17 @@ export const ProductText = styled.h4`
 
 export const AddToCart = styled.button`
   width: 100%;
-  height: 30px;
+  height: 40px;
   background-color: var(--primary);
   color: white;
   border: 0;
   border-radius: 5px;
+  outline: none;
   &:hover {
     cursor: pointer;
     opacity: 0.9;
+  }
+  &:active {
+    opacity: 0.8;
   }
 `;

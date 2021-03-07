@@ -11,6 +11,7 @@ export const Title = styled.h1`
 `;
 
 export const PaymentContainer = styled.form`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
