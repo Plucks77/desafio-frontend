@@ -15,7 +15,7 @@ export const PaymentContainer = styled.form`
   flex-direction: row;
   justify-content: space-between;
   margin: 1em 20vw;
-  padding: 1em 2em;
+  padding: 1em 6em;
   padding-top: 2em;
   border-radius: 5px;
   background-color: white;

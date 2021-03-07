@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 
 import api from "../../services/api";
 import { useAuth } from "../../contexts/auth";
@@ -48,8 +49,9 @@ const paymentSchema = yup.object({
 function Payment() {
   const [total, setTotal] = useState(null);
   const [sendProducts, setSendProducts] = useState([]);
-  const { productsInCart } = useCart();
+  const { productsInCart, removeAllProducts } = useCart();
   const { userId } = useAuth();
+  const history = useHistory();
 
   useEffect(() => {
     if (productsInCart) {
@@ -63,7 +65,6 @@ function Payment() {
           amount: product.amount,
           observation: product.observation,
         });
-        console.log(send);
       });
       setTotal(total);
       setSendProducts(send);
@@ -94,7 +95,8 @@ function Payment() {
                 total,
                 products: sendProducts,
               });
-              console.log(response);
+              removeAllProducts();
+              history.push("/purchases");
             } catch (e) {
               console.log(e);
             }

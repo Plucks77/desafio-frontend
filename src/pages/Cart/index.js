@@ -52,7 +52,7 @@ function Cart() {
       <Nav />
       <Container>
         <Title>Carrinho</Title>
-        {productsInCart.length ? (
+        {productsInCart !== null && productsInCart.length ? (
           <ProductsContainer>
             {productsInCart.map((product) => (
               <Product key={product.product.id}>

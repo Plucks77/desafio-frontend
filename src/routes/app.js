@@ -9,6 +9,7 @@ import {
 import Home from "../pages/Home";
 import Cart from "../pages/Cart";
 import Payment from "../pages/Payment";
+import Purchases from "../pages/Purchases";
 import Logout from "../pages/Logout";
 
 export default function RouterApp() {
@@ -25,6 +26,10 @@ export default function RouterApp() {
 
         <Route path="/payment">
           <Payment />
+        </Route>
+
+        <Route path="/purchases">
+          <Purchases />
         </Route>
 
         <Route path="/logout">

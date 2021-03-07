@@ -50,9 +50,19 @@ export function CartProvider({ children }) {
     setProductsInCart(filtered);
   }
 
+  function removeAllProducts() {
+    setProductsInCart(null);
+    localStorage.removeItem("@desafio:cart");
+  }
+
   return (
     <CartContext.Provider
-      value={{ productsInCart, addProductToCart, removeProductFromCart }}
+      value={{
+        productsInCart,
+        addProductToCart,
+        removeProductFromCart,
+        removeAllProducts,
+      }}
     >
       {children}
     </CartContext.Provider>
