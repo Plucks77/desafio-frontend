@@ -8,10 +8,18 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-size: 40px;
   margin-left: calc(11vw + 50px);
+  @media (max-width: 500px) {
+    margin: 0;
+    text-align: center;
+  }
 `;
 
 export const CategoryProductContainer = styled.div`
   display: flex;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const CategoryContainer = styled.div`
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
@@ -21,6 +29,10 @@ export const CategoryContainer = styled.div`
   padding-left: 10px;
   padding-top: 10px;
   border-radius: 5px;
+  @media (max-width: 500px) {
+    width: 100%;
+    margin: 1em 0;
+  }
 `;
 export const Category = styled.h4`
   font-weight: 500;
@@ -41,6 +53,10 @@ export const ProductContainer = styled.div`
   padding-bottom: 3em;
   background-color: white;
   width: 80vw;
+  @media (max-width: 500px) {
+    margin: 1em 0;
+    width: 100%;
+  }
 `;
 
 export const Product = styled.div`
