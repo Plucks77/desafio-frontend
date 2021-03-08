@@ -16,6 +16,7 @@ export const Title = styled.h1`
   @media (max-width: 500px) {
     margin: 0;
     text-align: center;
+    margin-bottom: 1em;
   }
 `;
 
@@ -23,14 +24,15 @@ export const PaymentContainer = styled.form`
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 1em 20vw;
-  padding: 1em 6em;
+  padding: 1em 1em;
   padding-top: 2em;
   border-radius: 5px;
   background-color: white;
   @media (max-width: 500px) {
     flex-direction: column;
+    align-items: center;
     margin: 0;
     padding: 0;
     width: 80vw;
@@ -41,6 +43,7 @@ export const PayArea = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border-right: 1em;
 `;
 
 export const SVG = styled.svg`
@@ -81,7 +84,7 @@ export const Field = styled.div`
   margin: 1em 0;
   width: ${(props) => (props.half ? "140px" : "300px")};
   @media (max-width: 500px) {
-    width: ${(props) => (props.half ? "160px" : "400px")};
+    width: ${(props) => (props.half ? "160px" : "320px")};
   }
 `;
 
@@ -89,10 +92,10 @@ export const DoubleField = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: red;
-  align-items: center;
+  align-items: flex-end;
   @media (max-width: 500px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 
