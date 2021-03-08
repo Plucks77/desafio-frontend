@@ -3,11 +3,11 @@ import React from "react";
 import { useCart } from "../../contexts/cart";
 import { Container, Link, LinkHome, OtherLinks } from "./styles";
 
-function Navbar() {
+function Navbar({ blur }) {
   const { productsInCart } = useCart();
 
   return (
-    <Container>
+    <Container blur={blur}>
       <LinkHome>
         <Link href="/home">Cardápio</Link>
       </LinkHome>

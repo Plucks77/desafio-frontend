@@ -7,6 +7,12 @@ export const Container = styled.div`
   padding: 2em 5em;
   margin-bottom: 2em;
   background-color: white;
+  filter: ${(props) => (props.blur ? "blur(1px)" : "")};
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 3em;
+  }
 `;
 
 export const Link = styled.a`
@@ -20,6 +26,9 @@ export const Link = styled.a`
     text-decoration: underline;
     transform: translate(0, -1px);
   }
+  @media (max-width: 500px) {
+    margin: 10px 0;
+  }
 `;
 
 export const LinkHome = styled.div`
@@ -30,4 +39,8 @@ export const LinkHome = styled.div`
 
 export const OtherLinks = styled.div`
   display: flex;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;

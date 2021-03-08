@@ -2,12 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 0 2em;
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`
   font-size: 40px;
   font-weight: 500;
   margin-left: 20vw;
+  @media (max-width: 500px) {
+    margin: 0;
+    text-align: center;
+  }
 `;
 
 export const PaymentContainer = styled.form`
@@ -20,6 +29,12 @@ export const PaymentContainer = styled.form`
   padding-top: 2em;
   border-radius: 5px;
   background-color: white;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 80vw;
+  }
 `;
 
 export const PayArea = styled.div`
@@ -32,6 +47,9 @@ export const SVG = styled.svg`
   width: 200px;
   height: 200px;
   color: var(--primary);
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const PayButton = styled.button`
@@ -61,14 +79,21 @@ export const Field = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1em 0;
-  width: ${(props) => (props.half ? "160px" : "400px")};
+  width: ${(props) => (props.half ? "140px" : "300px")};
+  @media (max-width: 500px) {
+    width: ${(props) => (props.half ? "160px" : "400px")};
+  }
 `;
 
 export const DoubleField = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: red;
   align-items: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 export const Label = styled.label`
@@ -82,6 +107,10 @@ export const Input = styled.input`
   padding-left: 10px;
   border: 3px solid var(--primary);
   outline: none;
+  max-width: 300px;
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 export const Select = styled.select`
@@ -100,6 +129,7 @@ export const InputStyle = {
   paddingLeft: "10px",
   border: "3px solid var(--primary)",
   outline: "none",
+  maxWidth: "300px",
 };
 
 export const Error = styled.small`

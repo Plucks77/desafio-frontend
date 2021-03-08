@@ -58,7 +58,7 @@ function Home() {
 
   return (
     <>
-      <Nav />
+      <Nav blur={showModal} />
       <Modal
         show={showModal}
         handleCloseModal={() => handleCloseModal()}

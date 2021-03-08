@@ -2,12 +2,22 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 0 2em;
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`
   font-size: 40px;
   font-weight: 500;
   margin-left: 20vw;
+  @media (max-width: 500px) {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 10px;
+  }
 `;
 
 export const ProductsContainer = styled.div`
@@ -20,6 +30,11 @@ export const ProductsContainer = styled.div`
   padding-top: 2em;
   border-radius: 5px;
   background-color: white;
+  @media (max-width: 500px) {
+    align-items: center;
+    width: 70vw;
+    margin: 0;
+  }
 `;
 export const Product = styled.div`
   display: flex;
@@ -29,6 +44,9 @@ export const Product = styled.div`
   border-top: 2px solid var(--background);
   border-radius: 2px;
   width: 100%;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 export const ProductDataContainer = styled.div`
   display: flex;

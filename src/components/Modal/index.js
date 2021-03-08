@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useCart } from "../../contexts/cart";
 
@@ -29,6 +29,16 @@ function Modal({ show, handleCloseModal, product }) {
     setObservation("");
     handleCloseModal();
   }
+
+  useEffect(() => {
+    if (show) {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [show]);
 
   return (
     <>
