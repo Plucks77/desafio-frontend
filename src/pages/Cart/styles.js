@@ -32,7 +32,7 @@ export const ProductsContainer = styled.div`
   background-color: white;
   @media (max-width: 500px) {
     align-items: center;
-    width: 70vw;
+    width: 80vw;
     margin: 0;
   }
 `;
@@ -125,6 +125,12 @@ export const NoProductsContainer = styled.div`
   margin: 1em 20vw;
   border-radius: 5px;
   background-color: white;
+  @media (max-width: 500px) {
+    align-items: center;
+    width: 80vw;
+    margin: 0;
+    text-align: center;
+  }
 `;
 
 export const NoProductsText = styled.h4`

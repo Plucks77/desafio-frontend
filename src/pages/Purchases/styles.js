@@ -2,12 +2,22 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 0 2em;
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`
   font-size: 40px;
   font-weight: 500;
   margin-left: 20vw;
+  @media (max-width: 500px) {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 1em;
+  }
 `;
 
 export const PurchasesContainer = styled.div`
@@ -16,6 +26,11 @@ export const PurchasesContainer = styled.div`
   padding-top: 1em;
   background-color: white;
   border-radius: 5px;
+
+  @media (max-width: 500px) {
+    margin: 0;
+    width: 90vw;
+  }
 `;
 export const Purchase = styled.div`
   display: flex;
@@ -40,6 +55,11 @@ export const NoProductsContainer = styled.div`
   margin: 1em 20vw;
   border-radius: 5px;
   background-color: white;
+  @media (max-width: 500px) {
+    margin: 0;
+    width: 90vw;
+    text-align: center;
+  }
 `;
 
 export const NoProductsText = styled.h1`

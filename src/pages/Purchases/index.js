@@ -58,7 +58,6 @@ function Purchases() {
           </NoProductsContainer>
         )}
       </Container>
-      )
     </>
   );
 }

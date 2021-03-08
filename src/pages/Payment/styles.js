@@ -31,7 +31,6 @@ export const PaymentContainer = styled.form`
   padding-top: 2em;
   border-radius: 5px;
   background-color: white;
-  min-width: 510px;
 
   @media (max-width: 980px) {
     flex-direction: column;
@@ -85,7 +84,7 @@ export const Field = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1em 0;
-  width: ${(props) => (props.half ? "140px" : "300px")};
+  width: ${(props) => (props.half ? "120px" : "250px")};
   @media (max-width: 980px) {
     width: ${(props) => (props.half ? "160px" : "250px")};
   }
@@ -113,7 +112,7 @@ export const Input = styled.input`
   padding-left: 10px;
   border: 3px solid var(--primary);
   outline: none;
-  max-width: 300px;
+  max-width: 250px;
   @media (max-width: 980px) {
     max-width: 250px;
   }
@@ -126,6 +125,7 @@ export const Select = styled.select`
   border: 3px solid var(--primary);
   outline: none;
   cursor: pointer;
+  max-width: 250px;
 `;
 export const Option = styled.option``;
 
