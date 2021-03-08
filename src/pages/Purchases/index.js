@@ -54,7 +54,7 @@ function Purchases() {
           </PurchasesContainer>
         ) : (
           <NoProductsContainer>
-            <NoProductsText>Sem compras</NoProductsText>
+            <NoProductsText>Você ainda não comprou nada!</NoProductsText>
           </NoProductsContainer>
         )}
       </Container>
