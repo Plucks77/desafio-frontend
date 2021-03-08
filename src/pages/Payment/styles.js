@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 0 2em;
-  @media (max-width: 500px) {
+
+  @media (max-width: 980px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +14,7 @@ export const Title = styled.h1`
   font-size: 40px;
   font-weight: 500;
   margin-left: 20vw;
-  @media (max-width: 500px) {
+  @media (max-width: 980px) {
     margin: 0;
     text-align: center;
     margin-bottom: 1em;
@@ -30,7 +31,9 @@ export const PaymentContainer = styled.form`
   padding-top: 2em;
   border-radius: 5px;
   background-color: white;
-  @media (max-width: 500px) {
+  min-width: 510px;
+
+  @media (max-width: 980px) {
     flex-direction: column;
     align-items: center;
     margin: 0;
@@ -50,7 +53,7 @@ export const SVG = styled.svg`
   width: 200px;
   height: 200px;
   color: var(--primary);
-  @media (max-width: 500px) {
+  @media (max-width: 980px) {
     display: none;
   }
 `;
@@ -83,8 +86,8 @@ export const Field = styled.div`
   flex-direction: column;
   margin: 1em 0;
   width: ${(props) => (props.half ? "140px" : "300px")};
-  @media (max-width: 500px) {
-    width: ${(props) => (props.half ? "160px" : "320px")};
+  @media (max-width: 980px) {
+    width: ${(props) => (props.half ? "160px" : "250px")};
   }
 `;
 
@@ -93,7 +96,7 @@ export const DoubleField = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  @media (max-width: 500px) {
+  @media (max-width: 980px) {
     flex-direction: column;
     align-items: center;
   }
@@ -111,8 +114,8 @@ export const Input = styled.input`
   border: 3px solid var(--primary);
   outline: none;
   max-width: 300px;
-  @media (max-width: 500px) {
-    width: 300px;
+  @media (max-width: 980px) {
+    max-width: 250px;
   }
 `;
 
@@ -132,7 +135,7 @@ export const InputStyle = {
   paddingLeft: "10px",
   border: "3px solid var(--primary)",
   outline: "none",
-  maxWidth: "300px",
+  maxWidth: "250px",
 };
 
 export const Error = styled.small`
