@@ -63,13 +63,14 @@ export const Product = styled.div`
   width: 250px;
   height: 250px;
   margin: 3em 2em;
-  border: 1px solid black;
+  background-color: lightgray;
   border-radius: 0 0 5px 5px;
 `;
 
 export const ProductImage = styled.img`
   width: 250px;
   height: 200px;
+  border-radius: 0 0 25px 25px;
 `;
 
 export const ProductData = styled.div`
